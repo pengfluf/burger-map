@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
+import WorkArea from 'components/WorkArea';
 
 export default function App() {
-  return <div>Hello</div>;
+  return <WorkArea />;
 }
