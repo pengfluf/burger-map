@@ -5,16 +5,18 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+
+import MapContainer from 'containers/MapContainer';
+import BurgerList from 'containers/BurgerList';
+
 import Wrapper from './styled/Wrapper';
 
 function WorkArea() {
   return (
     <Wrapper>
       <h1>Venues</h1>
-      <p>Gathering data...</p>
-      <div>Map</div>
-      <div>Burger Images</div>
+      <MapContainer />
+      <BurgerList />
     </Wrapper>
   );
 }
