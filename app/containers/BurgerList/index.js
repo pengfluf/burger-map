@@ -19,6 +19,8 @@ import saga from './saga';
 import { startFetching } from './actions';
 import makeSelectBurgerList from './selectors';
 
+import Wrapper from './styled/Wrapper';
+
 export class BurgerList extends React.Component {
   componentDidMount() {
     const { lat, lng } = this.props.mapContainer;
@@ -27,11 +29,11 @@ export class BurgerList extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         {this.props.burgerList.list.map(place => (
-          <BurgerItem key={place.id} place={place.venue} />
+          <BurgerItem key={place.venue.id} place={place.venue} />
         ))}
-      </div>
+      </Wrapper>
     );
   }
 }

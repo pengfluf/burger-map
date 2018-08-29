@@ -16,15 +16,22 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import makeSelectBurgerList from 'containers/BurgerList/selectors';
 import makeSelectMapContainer from './selectors';
 
+import TopTitles from './styled/TopTitles';
+import MainTitle from './styled/MainTitle';
+
 function MapContainer(props) {
   const { lat, lng } = props.mapContainer;
-  const { fetching } = props.burgerList;
+  const { list, fetching } = props.burgerList;
   return (
     <div>
-      <LoadingIndicator loading={fetching} />
+      <TopTitles>
+        <MainTitle>Venues</MainTitle>
+        <LoadingIndicator loading={fetching} />
+      </TopTitles>
       <MapBox
-        lat={lat}
-        lng={lng}
+        centerLat={lat}
+        centerLng={lng}
+        places={list}
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}

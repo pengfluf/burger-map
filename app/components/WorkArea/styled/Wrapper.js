@@ -5,7 +5,11 @@ const Wrapper = styled.div`
 
   color: #fff;
   background-image: linear-gradient(45deg, #e5497d, #555beb);
-  padding: 20px 40px;
+  padding: 30px;
+
+  @media (min-width: 768px) {
+    padding: 6.5vw;
+  }
 `;
 
 export default Wrapper;

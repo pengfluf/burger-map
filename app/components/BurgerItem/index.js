@@ -7,8 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Wrapper from './styled/Wrapper';
+
 function BurgerItem(props) {
-  return <div>{props.place.name}</div>;
+  return <Wrapper>{props.place.name}</Wrapper>;
 }
 
 BurgerItem.propTypes = {

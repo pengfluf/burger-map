@@ -10,11 +10,11 @@ import MapContainer from 'containers/MapContainer';
 import BurgerList from 'containers/BurgerList';
 
 import Wrapper from './styled/Wrapper';
+import Container from './styled/Container';
 
 function WorkArea() {
   return (
     <Wrapper>
-      <h1>Venues</h1>
       <MapContainer />
       <BurgerList />
     </Wrapper>

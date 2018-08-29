@@ -8,8 +8,8 @@ import { fromJS } from 'immutable';
 import { UPDATE_COORDS } from './constants';
 
 export const initialState = fromJS({
-  lat: 58.3750727,
-  lng: 26.6975258,
+  lat: 58.373452,
+  lng: 26.715379,
 });
 
 function mapContainerReducer(state = initialState, action) {
