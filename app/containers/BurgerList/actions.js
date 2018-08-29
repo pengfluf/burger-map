@@ -6,7 +6,8 @@
 
 import {
   START_FETCHING,
-  TAKE_BURGERS,
+  RECEIVE_PLACES,
+  RECEIVE_PHOTOS,
   RECEIVE_ERROR,
 } from './constants';
 
@@ -18,10 +19,17 @@ export function startFetching(lat, lng) {
   };
 }
 
-export function takeBurgers(burgers) {
+export function receivePlaces(places) {
   return {
-    type: TAKE_BURGERS,
-    burgers,
+    type: RECEIVE_PLACES,
+    places,
+  };
+}
+
+export function receivePhotos(photos) {
+  return {
+    type: RECEIVE_PHOTOS,
+    photos,
   };
 }
 

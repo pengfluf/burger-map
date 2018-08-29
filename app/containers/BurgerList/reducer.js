@@ -7,12 +7,14 @@
 import { fromJS } from 'immutable';
 import {
   START_FETCHING,
-  TAKE_BURGERS,
+  RECEIVE_PLACES,
+  RECEIVE_PHOTOS,
   RECEIVE_ERROR,
 } from './constants';
 
 export const initialState = fromJS({
-  list: [],
+  places: [],
+  photos: [],
   fetching: false,
   fetchingFailed: false,
   error: null,
@@ -21,9 +23,18 @@ export const initialState = fromJS({
 function burgerListReducer(state = initialState, action) {
   switch (action.type) {
     case START_FETCHING:
-      return state.set('fetching', true).set('fetchingFailed', false);
-    case TAKE_BURGERS:
-      return state.set('fetching', false).set('list', action.burgers);
+      return state
+        .set('fetchingFailed', false)
+        .set('error', null)
+        .set('fetching', true);
+    case RECEIVE_PLACES:
+      return state
+        .set('fetching', false)
+        .set('places', action.places);
+    case RECEIVE_PHOTOS:
+      return state
+        .set('fetching', false)
+        .set('photos', action.photos);
     case RECEIVE_ERROR:
       return state
         .set('fetching', false)

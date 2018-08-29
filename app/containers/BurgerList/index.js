@@ -28,10 +28,15 @@ export class BurgerList extends React.Component {
   }
 
   render() {
+    const { places, photos } = this.props.burgerList;
     return (
       <Wrapper>
-        {this.props.burgerList.list.map(place => (
-          <BurgerItem key={place.venue.id} place={place.venue} />
+        {places.map((place, index) => (
+          <BurgerItem
+            key={place.venue.id}
+            place={place.venue}
+            photo={photos[index]}
+          />
         ))}
       </Wrapper>
     );
@@ -40,7 +45,8 @@ export class BurgerList extends React.Component {
 
 BurgerList.propTypes = {
   burgerList: PropTypes.shape({
-    list: PropTypes.array,
+    places: PropTypes.array,
+    photos: PropTypes.array,
   }),
   mapContainer: PropTypes.shape({
     lat: PropTypes.number,

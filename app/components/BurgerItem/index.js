@@ -8,14 +8,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Wrapper from './styled/Wrapper';
+import Info from './styled/Info';
 
 function BurgerItem(props) {
-  return <Wrapper>{props.place.name}</Wrapper>;
+  return (
+    <Wrapper>
+      {props.photo && (
+        <Info backgroundURL={props.photo.webformatURL} />
+      )}
+    </Wrapper>
+  );
 }
 
 BurgerItem.propTypes = {
-  place: PropTypes.shape({
-    name: PropTypes.string,
+  photo: PropTypes.shape({
+    webformatURL: PropTypes.string,
+    webformatWidth: PropTypes.number,
+    webformatHeight: PropTypes.number,
   }),
 };
 

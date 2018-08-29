@@ -13,7 +13,11 @@ import { createStructuredSelector } from 'reselect';
 import MapBox from 'components/MapBox';
 import LoadingIndicator from 'components/LoadingIndicator';
 
+import { startFetching } from 'containers/BurgerList/actions';
 import makeSelectBurgerList from 'containers/BurgerList/selectors';
+
+import { updateCoords } from './actions';
+import { GOOGLE_API_URL } from './constants';
 import makeSelectMapContainer from './selectors';
 
 import TopTitles from './styled/TopTitles';
@@ -21,7 +25,7 @@ import MainTitle from './styled/MainTitle';
 
 function MapContainer(props) {
   const { lat, lng } = props.mapContainer;
-  const { list, fetching } = props.burgerList;
+  const { places, fetching } = props.burgerList;
   return (
     <div>
       <TopTitles>
@@ -31,9 +35,11 @@ function MapContainer(props) {
       <MapBox
         centerLat={lat}
         centerLng={lng}
-        places={list}
+        places={places}
+        updateCenter={props.updateCoords}
+        startFetching={props.startFetching}
         isMarkerShown
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL={GOOGLE_API_URL}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={
@@ -52,6 +58,8 @@ MapContainer.propTypes = {
   burgerList: PropTypes.shape({
     fetching: PropTypes.bool,
   }),
+  updateCoords: PropTypes.func,
+  startFetching: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -61,7 +69,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    updateCoords: (lat, lng) => dispatch(updateCoords(lat, lng)),
+    startFetching: (lat, lng) => dispatch(startFetching(lat, lng)),
   };
 }
 
