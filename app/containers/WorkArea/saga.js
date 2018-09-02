@@ -2,9 +2,11 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
-  BASE_URL,
-  CLIENT_ID,
-  CLIENT_SECRET,
+  FOURSQUARE_API_URL,
+  FOURSQUARE_ID,
+  FOURSQUARE_SECRET,
+  PIXABAY_API_URL,
+  PIXABAY_KEY,
   START_FETCHING,
 } from './constants';
 import {
@@ -13,7 +15,7 @@ import {
   receiveError,
 } from './actions';
 
-const url = `${BASE_URL}/explore?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&v=20180323`;
+const url = `${FOURSQUARE_API_URL}/explore?client_id=${FOURSQUARE_ID}&client_secret=${FOURSQUARE_SECRET}&v=20180323`;
 
 export function* fetchPlaces(action) {
   try {
@@ -36,7 +38,7 @@ export function* fetchPhotos(quantity) {
     try {
       const photos = yield call(
         axios.get,
-        `https://pixabay.com/api/?key=9961307-d69b626d0edc5963b0ee27fe3&q=burger&image_type=photo&category=food&safesearch=true&per_page=${quantity}&min_width=600&min_height=450&orientation=horizontal`,
+        `${PIXABAY_API_URL}/?key=${PIXABAY_KEY}&q=burger&image_type=photo&category=food&safesearch=true&per_page=${quantity}&min_width=600&min_height=450&orientation=horizontal`,
       );
       yield put(receivePhotos(photos.data.hits));
       prevQuantity = quantity;

@@ -6,8 +6,7 @@ import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import mapContainerReducer from 'containers/MapContainer/reducer';
-import burgerListReducer from 'containers/BurgerList/reducer';
+import workAreaReducer from 'containers/WorkArea/reducer';
 
 /*
  * routeReducer
@@ -43,8 +42,7 @@ export function routeReducer(state = routeInitialState, action) {
 export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
-    mapContainer: mapContainerReducer,
-    burgerList: burgerListReducer,
+    workArea: workAreaReducer,
     ...injectedReducers,
   });
 }

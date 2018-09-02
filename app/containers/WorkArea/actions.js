@@ -1,6 +1,6 @@
 /*
  *
- * BurgerList actions
+ * WorkArea actions
  *
  */
 
@@ -9,6 +9,7 @@ import {
   RECEIVE_PLACES,
   RECEIVE_PHOTOS,
   RECEIVE_ERROR,
+  UPDATE_COORDS,
 } from './constants';
 
 export function startFetching(lat, lng) {
@@ -37,5 +38,13 @@ export function receiveError(error) {
   return {
     type: RECEIVE_ERROR,
     error,
+  };
+}
+
+export function updateCoords(lat, lng) {
+  return {
+    type: UPDATE_COORDS,
+    lat,
+    lng,
   };
 }

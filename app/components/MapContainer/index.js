@@ -7,25 +7,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
 import MapBox from 'components/MapBox';
 import LoadingIndicator from 'components/LoadingIndicator';
 
-import { startFetching } from 'containers/BurgerList/actions';
-import makeSelectBurgerList from 'containers/BurgerList/selectors';
-
-import { updateCoords } from './actions';
-import { GOOGLE_API_URL } from './constants';
-import makeSelectMapContainer from './selectors';
+import { GOOGLE_API_URL } from 'containers/WorkArea/constants';
 
 import TopTitles from './styled/TopTitles';
 import MainTitle from './styled/MainTitle';
 
 function MapContainer(props) {
-  const { lat, lng } = props.mapContainer;
-  const { places, fetching } = props.burgerList;
+  const { lat, lng } = props.map;
+  const { places, fetching } = props;
   return (
     <div>
       <TopTitles>
@@ -51,30 +43,14 @@ function MapContainer(props) {
 }
 
 MapContainer.propTypes = {
-  mapContainer: PropTypes.shape({
+  map: PropTypes.shape({
     lat: PropTypes.number,
     lng: PropTypes.number,
   }),
-  burgerList: PropTypes.shape({
-    fetching: PropTypes.bool,
-  }),
+  places: PropTypes.array,
+  fetching: PropTypes.bool,
   updateCoords: PropTypes.func,
   startFetching: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  mapContainer: makeSelectMapContainer(),
-  burgerList: makeSelectBurgerList(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    updateCoords: (lat, lng) => dispatch(updateCoords(lat, lng)),
-    startFetching: (lat, lng) => dispatch(startFetching(lat, lng)),
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MapContainer);
+export default MapContainer;

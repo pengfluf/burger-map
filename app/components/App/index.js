@@ -7,8 +7,10 @@
  */
 
 import React from 'react';
-import WorkArea from 'components/WorkArea';
+import WorkArea from 'containers/WorkArea';
 
-export default function App() {
+function App() {
   return <WorkArea />;
 }
+
+export default App;

@@ -9,12 +9,16 @@ import PropTypes from 'prop-types';
 
 import Wrapper from './styled/Wrapper';
 import Info from './styled/Info';
+import Title from './styled/Title';
 
 function BurgerItem(props) {
   return (
     <Wrapper>
       {props.photo && (
-        <Info backgroundURL={props.photo.webformatURL} />
+        <Info backgroundURL={props.photo.webformatURL}>
+          <Title>{props.place.name}</Title>
+          <Title address>{props.place.location.address}</Title>
+        </Info>
       )}
     </Wrapper>
   );
@@ -23,8 +27,12 @@ function BurgerItem(props) {
 BurgerItem.propTypes = {
   photo: PropTypes.shape({
     webformatURL: PropTypes.string,
-    webformatWidth: PropTypes.number,
-    webformatHeight: PropTypes.number,
+  }),
+  place: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.shape({
+      address: PropTypes.string,
+    }),
   }),
 };
 
