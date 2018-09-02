@@ -10,6 +10,7 @@ import {
   RECEIVE_PHOTOS,
   RECEIVE_ERROR,
   UPDATE_COORDS,
+  TOGGLE_MARKER_LABEL,
 } from './constants';
 
 export function startFetching(lat, lng) {
@@ -46,5 +47,12 @@ export function updateCoords(lat, lng) {
     type: UPDATE_COORDS,
     lat,
     lng,
+  };
+}
+
+export function toggleMarkerLabel(index) {
+  return {
+    type: TOGGLE_MARKER_LABEL,
+    index,
   };
 }

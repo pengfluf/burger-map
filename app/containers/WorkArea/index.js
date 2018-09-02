@@ -20,7 +20,11 @@ import saga from './saga';
 
 import Wrapper from './styled/Wrapper';
 
-import { startFetching, updateCoords } from './actions';
+import {
+  startFetching,
+  updateCoords,
+  toggleMarkerLabel,
+} from './actions';
 
 export class WorkArea extends React.Component {
   componentDidMount() {
@@ -40,6 +44,7 @@ export class WorkArea extends React.Component {
           <MapContainer
             startFetching={this.props.startFetching}
             updateCoords={this.props.updateCoords}
+            toggleMarkerLabel={this.props.toggleMarkerLabel}
             map={map}
             places={places}
             fetching={fetching}
@@ -63,6 +68,7 @@ WorkArea.propTypes = {
   }),
   startFetching: PropTypes.func,
   updateCoords: PropTypes.func,
+  toggleMarkerLabel: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -73,6 +79,7 @@ function mapDispatchToProps(dispatch) {
   return {
     startFetching: (lat, lng) => dispatch(startFetching(lat, lng)),
     updateCoords: (lat, lng) => dispatch(updateCoords(lat, lng)),
+    toggleMarkerLabel: index => dispatch(toggleMarkerLabel(index)),
   };
 }
 

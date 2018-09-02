@@ -17,8 +17,10 @@ export const GOOGLE_API_URL =
 export const PIXABAY_API_URL = 'https://pixabay.com/api';
 export const PIXABAY_KEY = '9961307-d69b626d0edc5963b0ee27fe3';
 
-export const START_FETCHING = 'BurgerList/START_FETCHING';
-export const RECEIVE_ERROR = 'BurgerList/RECEIVE_ERROR';
-export const RECEIVE_PLACES = 'BurgerList/RECEIVE_PLACES';
-export const RECEIVE_PHOTOS = 'BurgerList/RECEIVE_PHOTOS';
-export const UPDATE_COORDS = 'MapContainer/UPDATE_COORDS';
+export const START_FETCHING = 'WorkArea/START_FETCHING';
+export const RECEIVE_ERROR = 'WorkArea/RECEIVE_ERROR';
+export const RECEIVE_PLACES = 'WorkArea/RECEIVE_PLACES';
+export const RECEIVE_PHOTOS = 'WorkArea/RECEIVE_PHOTOS';
+export const UPDATE_COORDS = 'WorkArea/UPDATE_COORDS';
+
+export const TOGGLE_MARKER_LABEL = 'WorkArea/TOGGLE_MARKER_LABEL';

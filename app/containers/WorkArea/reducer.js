@@ -11,6 +11,7 @@ import {
   RECEIVE_PLACES,
   RECEIVE_PHOTOS,
   UPDATE_COORDS,
+  TOGGLE_MARKER_LABEL,
 } from './constants';
 
 export const initialState = fromJS({
@@ -49,6 +50,12 @@ function workAreaReducer(state = initialState, action) {
       return state
         .setIn(['map', 'lat'], action.lat)
         .setIn(['map', 'lng'], action.lng);
+    case TOGGLE_MARKER_LABEL:
+      return state.setIn(
+        ['places', action.index, 'labelVisible'],
+        state.getIn(['places', action.index, 'labelVisible']) !==
+          true,
+      );
     default:
       return state;
   }

@@ -10,8 +10,11 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker,
 } from 'react-google-maps';
+
+import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel';
+
+import MarkerLabel from 'components/MarkerLabel';
 
 import burgerIcon from 'images/icon.svg';
 
@@ -40,15 +43,25 @@ class MapBox extends React.Component {
         defaultCenter={{ lat: centerLat, lng: centerLng }}
         onDragEnd={this.onDragEnd}
       >
-        {places.map(place => {
+        {places.map((place, index) => {
           const { lat, lng } = place.venue.location;
           return (
-            <Marker
+            /* eslint-disable no-undef */
+            <MarkerWithLabel
+              labelClass="test"
+              labelStyle={{ overflow: 'visible' }}
+              style={{ overflow: 'visible' }}
               key={place.venue.id}
               position={{ lat, lng }}
               icon={burgerIcon}
-            />
+              labelAnchor={new google.maps.Point(10, 140)}
+              labelVisible={place.labelVisible === true}
+              onClick={() => this.props.toggleMarkerLabel(index)}
+            >
+              <MarkerLabel place={place} />
+            </MarkerWithLabel>
           );
+          /* eslint-enable */
         })}
       </GoogleMap>
     );
@@ -61,6 +74,7 @@ MapBox.propTypes = {
   places: PropTypes.array,
   updateCenter: PropTypes.func,
   startFetching: PropTypes.func,
+  toggleMarkerLabel: PropTypes.func,
 };
 
 export default withScriptjs(withGoogleMap(MapBox));

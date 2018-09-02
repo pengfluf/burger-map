@@ -30,6 +30,7 @@ function MapContainer(props) {
         places={places}
         updateCenter={props.updateCoords}
         startFetching={props.startFetching}
+        toggleMarkerLabel={props.toggleMarkerLabel}
         isMarkerShown
         googleMapURL={GOOGLE_API_URL}
         loadingElement={<div style={{ height: `100%` }} />}
@@ -51,6 +52,7 @@ MapContainer.propTypes = {
   fetching: PropTypes.bool,
   updateCoords: PropTypes.func,
   startFetching: PropTypes.func,
+  toggleMarkerLabel: PropTypes.func,
 };
 
 export default MapContainer;
