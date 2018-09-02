@@ -51,11 +51,18 @@ function workAreaReducer(state = initialState, action) {
         .setIn(['map', 'lat'], action.lat)
         .setIn(['map', 'lng'], action.lng);
     case TOGGLE_MARKER_LABEL:
-      return state.setIn(
-        ['places', action.index, 'labelVisible'],
-        state.getIn(['places', action.index, 'labelVisible']) !==
-          true,
-      );
+      return state.withMutations(st => {
+        st.get('places').forEach((place, index) => {
+          if (place.get('labelVisible') === true) {
+            st.setIn(['places', index, 'labelVisible'], false);
+          }
+        });
+        st.setIn(
+          ['places', action.index, 'labelVisible'],
+          state.getIn(['places', action.index, 'labelVisible']) !==
+            true,
+        );
+      });
     default:
       return state;
   }

@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   color: black;
   border: 1px solid gray;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin-bottom: 10px;
   z-index: 5;
 
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     position: absolute;
     z-index: -1;
     bottom: 2px;
-    left: 1px;
+    left: 0px;
     content: '';
     display: block;
     width: 0;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     position: absolute;
     z-index: -1;
     bottom: 2px;
-    left: 3px;
+    left: 2px;
     content: '';
     display: block;
     width: 0;
