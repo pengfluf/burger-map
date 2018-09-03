@@ -12,11 +12,22 @@ import Title from './styled/Title';
 import Address from './styled/Address';
 
 function MarkerLabel(props) {
-  const { name, location } = props.place.venue;
+  const { name } = props.place.venue;
+  const { formattedAddress } = props.place.venue.location;
   return (
     <Wrapper>
       <Title>{name}</Title>
-      <Address>{location.address}</Address>
+      <Address>
+        {formattedAddress.map((chunk, index) => {
+          if (
+            formattedAddress.length > 1 &&
+            index !== formattedAddress.length - 1
+          ) {
+            return `${chunk}, `;
+          }
+          return chunk;
+        })}
+      </Address>
     </Wrapper>
   );
 }

@@ -19,6 +19,7 @@ import makeSelectWorkArea from './selectors';
 import saga from './saga';
 
 import Wrapper from './styled/Wrapper';
+import Explanation from './styled/Explanation';
 
 import {
   startFetching,
@@ -49,6 +50,13 @@ export class WorkArea extends React.Component {
             places={places}
             fetching={fetching}
           />
+          <Explanation>
+            Why do we see the pictures from Pixabay instead of
+            Foursquare, which is mentioned in the test task? Because
+            if you want to use the Foursquare{"'"}s /venues/photos
+            endpoint you have to pay. Limitation on 90 free trial
+            requests is ridiculous.
+          </Explanation>
           <BurgerList places={places} photos={photos} />
         </Wrapper>
       </div>

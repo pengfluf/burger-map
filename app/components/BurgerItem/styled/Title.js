@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Title = styled.h3`
   font-size: ${props => (props.address ? '18px' : '25px')};
+  font-weight: ${props => (props.address ? 400 : 700)};
 
   z-index: 1;
 

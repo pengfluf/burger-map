@@ -87,6 +87,7 @@ class MapBox extends React.Component {
           }}
           defaultRadius={EXCLUDE_RADIUS_METERS}
           options={{
+            clickable: false,
             fillColor: '#000',
             fillOpacity: 0.2,
             strokeWeight: 0,
