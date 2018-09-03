@@ -24,3 +24,7 @@ export const RECEIVE_PHOTOS = 'WorkArea/RECEIVE_PHOTOS';
 export const UPDATE_COORDS = 'WorkArea/UPDATE_COORDS';
 
 export const TOGGLE_MARKER_LABEL = 'WorkArea/TOGGLE_MARKER_LABEL';
+
+export const EXCLUDE_CENTER_LAT = 58.3780494;
+export const EXCLUDE_CENTER_LNG = 26.7299207;
+export const EXCLUDE_RADIUS_METERS = 1000;
